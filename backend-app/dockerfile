@@ -1,0 +1,19 @@
+FROM node:12.16.1-alpine3.9
+
+# create work directory
+WORKDIR /app
+# copy files named as "package*.json" to root folder
+# RUN apk add --no-cache make gcc g++ python && \
+#   npm install && \
+#   npm rebuild bcrypt --build-from-source && \
+#   apk del make gcc g++ python && \
+#   npm -g install nodemon
+RUN npm -g install nodemon && npm install
+COPY package*.json ./
+COPY . .
+
+ENV PORT=3000
+
+EXPOSE ${PORT}
+
+CMD ["nodemon", "app.js"]
