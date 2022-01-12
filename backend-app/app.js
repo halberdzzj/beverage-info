@@ -19,7 +19,7 @@ app.get('/drinks', async (req, res) => {
         const type = req.query.type;
         // console.log('app', type)
         const data = await fetchDrinks(type);
-        return res.send(data);
+        return res.send({drinks: data});
 
     } catch (err) {
         return res.send({ Message: err.Message });
