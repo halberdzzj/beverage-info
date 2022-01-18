@@ -8,8 +8,9 @@ WORKDIR /app
 #   npm rebuild bcrypt --build-from-source && \
 #   apk del make gcc g++ python && \
 #   npm -g install nodemon
-RUN npm -g install nodemon && npm install
+
 COPY package*.json ./
+RUN npm -g install nodemon && npm install
 COPY . .
 
 ENV PORT=3000
